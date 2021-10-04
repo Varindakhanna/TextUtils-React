@@ -3,6 +3,7 @@ import React , {useState} from 'react'
 export default function TextForm(props)
  {
   let counting=0;
+  let counting2= 0;
   let i;
 
     // let name = "I love  you";
@@ -62,16 +63,22 @@ export default function TextForm(props)
          for(i=0;i<arr.length-1;i++)
          {
          //  console.log("for loop");
+          
            if(arr[i]!=='')
            {
             counting++;
+           
+             counting2+=arr[i].length;
+
             // console.log("count called " + counting);
              
            }
+           
          }
        
          setText(event.target.value);
       setCount(counting);
+      setCount2(counting2);
 
      }
 
@@ -79,6 +86,8 @@ export default function TextForm(props)
     //  using state 
      const [text , setText] =useState(' ');
      const [count , setCount] =useState(0);
+     const [count2 , setCount2] =useState(0);
+     
 
      
 
@@ -103,7 +112,7 @@ export default function TextForm(props)
     <div className="container my-3" style={{color: props.mode==='dark'?'white':'black'}} >
       <h1>Your Text Summary</h1>
 
-      <p>{count} words {text.length} letters</p>
+      <p>{count} words {count2} letters</p>
       <p>{0.008*text.split(" ").length} Minutes to read the above text</p>
       <h2>Preview</h2>
       <p>{text.length>0?text:"Enter something in the above textbox"}</p>
